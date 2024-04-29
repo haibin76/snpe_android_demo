@@ -1,97 +1,16 @@
-# Pre-compiled Libraries
+1:将snpe-1.68.0.3932/examples/NativeCpp/SampleCode/jni目录中的C代码进行封装和修改，编译成Android的SO
+  这个编译方介绍，将在另外一个工程中介绍
+2：该工程的主体是将ndk-sample/hello-libs工程作为蓝本，来进行修改。
 
-This sample shows you how to use pre-compiled 3rd party C/C++ libraries in your
-app.
-
-## Introduction
-
-This sample uses [CMake](https://developer.android.com/ndk/guides/cmake) with
-external library support. It shows how to include pre-built static libraries
-(gmath and gperf) in your app.
-
-## Description
-
-The sample includes 2 modules:
-
-- **app** -- imports a shared library (libgperf.so) and a static library
-  (libgmath.a) from the `distribution` folder.
-- **gen-libs** -- contains the source code and CMake build script for the gmath
-  and gperf example libraries. The resulting binaries are copied into the
-  `distribution` folder. By default, the gen-libs module is disabled in
-  settings.gradle and app/build.gradle, so it won't show up in Android Studio
-  IDE. If re-generating lib is desirable, follow comments inside settings.gradle
-  and app/build.gradle to enable this module, generate libs, then disable it
-  again to avoid unnecessary confusion.
-
-The main goal of the sample is to show how to use pre-built 3rd party libraries,
-not to demonstrate how to build them. Thus, the pre-built libs are included in
-the `distribution` folder.
-
-When importing libraries into your app, include the following in your app's
-`CMakeLists.txt` file (in the following order):
-
-- Import libraries as static or shared (using `add_library`).
-- Configure each library binary location (using `set_target_properties` and
-  `${ANDROID_ABI}`).
-- Configure each library headers location (using `target_include_directories`).
-
-For example, from \[app/src/main/cpp/CMakeLists.txt\]:
-
-```cmake
-add_library(lib_gmath STATIC IMPORTED)
-set_target_properties(lib_gmath PROPERTIES IMPORTED_LOCATION
-    ${distribution_DIR}/gmath/lib/${ANDROID_ABI}/libgmath.a)
-
-add_library(lib_gperf SHARED IMPORTED)
-set_target_properties(lib_gperf PROPERTIES IMPORTED_LOCATION
-    ${distribution_DIR}/gperf/lib/${ANDROID_ABI}/libgperf.so)
-
-target_include_directories(hello-libs PRIVATE
-                           ${distribution_DIR}/gmath/include
-                           ${distribution_DIR}/gperf/include)
-```
-
-## Re-compiling the libraries
-
-To regenerate the two libraries, follow these steps:
-
-1. In \[settings.gradle\], enable the line `include :gen-libs`.
-1. In \[app/build.gradle\], enable the line `api project(':gen-libs')`.
-1. Build the project.
-1. Undo the first 2 steps.
-1. Clean up temporary build files with `rm -fr app/build app/.cxx`.
-
-## Screenshots
-
-![screenshot](screenshot.png)
-
-## Support
-
-If you've found an error in these samples, please
-[file an issue](https://github.com/googlesamples/android-ndk/issues/new).
-
-Patches are encouraged, and may be submitted by
-[forking this project](https://github.com/googlesamples/android-ndk/fork) and
-submitting a pull request through GitHub. Please see
-[CONTRIBUTING.md](../CONTRIBUTING.md) for more details.
-
-- [Stack Overflow](http://stackoverflow.com/questions/tagged/android-ndk)
-- [Android Tools Feedbacks](http://tools.android.com/feedback)
-
-## License
-
-Copyright 2015 Google, Inc.
-
-Licensed to the Apache Software Foundation (ASF) under one or more contributor
-license agreements. See the NOTICE file distributed with this work for
-additional information regarding copyright ownership. The ASF licenses this file
-to you under the Apache License, Version 2.0 (the "License"); you may not use
-this file except in compliance with the License. You may obtain a copy of the
-License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software distributed
-under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
-CONDITIONS OF ANY KIND, either express or implied. See the License for the
-specific language governing permissions and limitations under the License.
+下面详细介绍下修改内容
+3：将1的步骤中生成的头文件SnpeLoader.h以及库libsnpe-action.s0放到distribution/snpe下的include和lib/arm64-v8a(目前设备仅支持arm64的架构)
+4：工程中，gmath和gperf是以前工程中带的例子，目前被注释调了，可以不用管它
+5：在app/build.gradle中添加“ndk.abiFilters 'arm64-v8a'”，只是生成arm64的架构
+6：JNI的地址主要在：app/src/main/cpp下面，重点再介绍这个目录下的内容
+    6.1 android_log.h封装的是Android的Jni曾使用的Log输出，整个Jni曾的输出都可以使用该接口输出
+    6.2 resize_image.cpp和h文件，是作Y分量的resize算法，目前是支持最简单的resize算法，以后支持双线性差值算法，可以写到里面来
+    6.3 snpe_env.cpp和h文件，因为Snpe SDK的DSP环境需要APK设置环境变量，具体请参考：https://developer.qualcomm.com/sites/default/files/docs/snpe/dsp_runtime.html，所以需要在JNI曾调用setenv来设置环境变量
+    6.4 hello-libs.cpp是JNI的主体函数，有初始化函数，每个推理的函数，同时还有释放函数。
+具体的函数功能和用法，请看每个文件里面的注释。
+7：CMakeLists.txt 是将这个文件夹中的文件生成so，并且按照so的依赖需要，将Snpe SDK中的SO也copy到工程里面来。具体的Copy位置在：snpe-1.68/lib/aarch64-android-clange8.0下面
+8：介绍app/src/main/java/com/example/hellolibs/MainActivity.java,该文件的Native函数，是调用了JNI的相对应的函数，具体可以查看该文件中的注释
