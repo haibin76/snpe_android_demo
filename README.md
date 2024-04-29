@@ -15,3 +15,7 @@
 
 - [5](#5)：CMakeLists.txt 是将这个文件夹中的文件生成so，并且按照so的依赖需要，将Snpe SDK中的SO也copy到工程里面来。具体的Copy位置在：snpe-1.68/lib/aarch64-android-clange8.0下面
 - [6](#6)：介绍app/src/main/java/com/example/hellolibs/MainActivity.java,该文件的Native函数，是调用了JNI的相对应的函数，具体可以查看该文件中的注释
+
+# 目前遇到的问题（2024-4-29）
+如果MainActivity.java中j_run_time="cpu", 则在hello-libs.cpp中，调用CreateSnpeEngine函数出错，出错log：“Failed to start logger”，分析原因是：该工程需要写sdcard或者存储的权限，目前完整的做法是：将申请权限的提示反馈给用户，用户点击“同意”，才算完整的授权
+如果MainActivity.java中j_run_time="dsp", 则在hello-libs.cpp中，调用CreateSnpeEngine函数出错，出错log："Failed to load DSP path. libsnpe_dsp_domains_v2.so: dlopen failed: library libsnpe_dsp_domains_v2.so not found  libcdsprpc.so, libcdsprpc_system.so." 应该是需要dsp的签名
