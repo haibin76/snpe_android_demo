@@ -29,11 +29,13 @@ set(distribution_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../../../distribution)
 #set_target_properties(lib_gperf PROPERTIES IMPORTED_LOCATION ${distribution_DIR}/gperf/lib/${ANDROID_ABI}/libgperf.so)
 
 #libaction_snpe.so
+#这个SO是我们编译snpe-1.68.0.3932/example/NativeCpp/SampleCode/Jni生成的so
 add_library(lib_action_snpe SHARED IMPORTED)
 set_target_properties(lib_action_snpe PROPERTIES IMPORTED_LOCATION ${distribution_DIR}/snpe/lib/${ANDROID_ABI}/lib/libaction_snpe.so)
 
 ##################################################################################
 #########################dsp folder 5 so set######################################
+#下面五个so是snpe-1.68.0.3932/lib/dsp下面的so，目前可能没用，但是全部copy过来
 #libcalculator_skel.so
 #add_library(lib_calculator_skel SHARED IMPORTED)
 #set_target_properties(lib_calculator_skel PROPERTIES IMPORTED_LOCATION ${distribution_DIR}/snpe/lib/${ANDROID_ABI}/dsp/libcalculator_skel.so)
@@ -56,9 +58,10 @@ set_target_properties(lib_action_snpe PROPERTIES IMPORTED_LOCATION ${distributio
 
 ##################################################################################
 #########################arm64-v8a 10 so set #####################################
+#下面10个so是snpe-1.68.0.3932/lib/aarch64-android-clang8.0的so，目没有全部使用
 #libc++_shared.so
-#add_library(lib_c++_shared SHARED IMPORTED)
-#set_target_properties(lib_c++_shared PROPERTIES IMPORTED_LOCATION ${distribution_DIR}/snpe/lib/${ANDROID_ABI}/lib/libc++_shared.so)
+add_library(lib_c++_shared SHARED IMPORTED)
+set_target_properties(lib_c++_shared PROPERTIES IMPORTED_LOCATION ${distribution_DIR}/snpe/lib/${ANDROID_ABI}/lib/libc++_shared.so)
 
 #libcalculator_htp.so
 #add_library(lib_calculator_htp SHARED IMPORTED)
@@ -81,8 +84,8 @@ set_target_properties(lib_action_snpe PROPERTIES IMPORTED_LOCATION ${distributio
 #set_target_properties(lib_snpe_dsp_domains_v2 PROPERTIES IMPORTED_LOCATION ${distribution_DIR}/snpe/lib/${ANDROID_ABI}/lib/libsnpe_dsp_domains_v2.so)
 
 #libSNPE.so
-#add_library(lib_SNPE SHARED IMPORTED)
-#set_target_properties(lib_SNPE PROPERTIES IMPORTED_LOCATION ${distribution_DIR}/snpe/lib/${ANDROID_ABI}/lib/libSNPE.so)
+add_library(lib_SNPE SHARED IMPORTED)
+set_target_properties(lib_SNPE PROPERTIES IMPORTED_LOCATION ${distribution_DIR}/snpe/lib/${ANDROID_ABI}/lib/libSNPE.so)
 
 #libSnpeHtpPrepare.so
 #add_library(lib_SnpeHtpPrepare SHARED IMPORTED)
@@ -119,13 +122,13 @@ target_link_libraries(hello-libs
         #                lib_SnpeHtpV68Skel
         #                lib_SnpeHtpV69Skel
 
-        #                lib_c++_shared
+                        lib_c++_shared
         #               lib_calculator_htp
         #               lib_calculator
         #               lib_hta
         #               lib_PlatformValidatorShared
         #               lib_snpe_dsp_domains_v2
-        #               lib_SNPE
+                       lib_SNPE
         #               lib_SnpeHtpPrepare
         #               lib_SnpeHtpV68Stub
         #               lib_SnpeHtpV69Stub

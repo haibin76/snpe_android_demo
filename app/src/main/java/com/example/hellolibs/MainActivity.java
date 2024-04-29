@@ -23,8 +23,9 @@ import com.example.hellolibs.AssetCopyer;
  */
 public class MainActivity extends AppCompatActivity {
 
+    //对调用的Native Jni函数的一些参数做声明
     private static final String dlcFile_ = "9_best_quantized_512.dlc";
-    private static final String runTime_ = "cpu"; //"cpu" "gpu"
+    private static final String runTime_ = "dsp"; //"cpu" "gpu" "dsp"
     private static final String dataFmt_ = "USERBUFFER_FLOAT"; //only support
     private static final boolean useOpengl_ = false;
 
@@ -35,13 +36,19 @@ public class MainActivity extends AppCompatActivity {
     private static final int    outHeight_ = 512;
     private static final int    outChannel_ = 1;
 
+    //Native JNI的函数，对ADSP_LIBRARY_PATH和LD_LIBRARY_PATH进行设置
     public native boolean setAdspLibraryPath(String j_dsp_env);
+
+    //Native JNI的函数，在整个工程初始化的时候，被调用，整个函数的参数，在JNI层有详细的注释
     public native int  initJni(
                                    String dlc_file,String run_time,String data_fmt,boolean use_opengl,
                                    int j_in_width, int j_in_height, int j_in_channel,
                                    int j_out_width, int j_out_height, int j_out_channel);
+
+    //Native JNI的函数，每一帧读取的Y，传递到JNI层，同时要做推理，目前还未实现
     public native int  referenceJni(byte[] img_y);
 
+    //Native JNI的函数，工程退出的时候，调用该函数释放掉
     public native int uninitJni();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,12 +57,11 @@ public class MainActivity extends AppCompatActivity {
         tv.setText( "The calculation took " + " ticks" );
         setContentView(tv);
 
-        System.loadLibrary("hello-libs");
-
         //#0 设置SNPE DSP的环境变量
         String path = getApplication().getApplicationInfo().nativeLibraryDir;
         setAdspLibraryPath(path);
 
+        //#1再调用初始化的函数，来初始化SnpeSDK
         initJNISnpeEngine();
 
         try {
@@ -69,13 +75,13 @@ public class MainActivity extends AppCompatActivity {
 
     public native long  uninit();
     static {
-        System.loadLibrary("snpe-env");
+        System.loadLibrary("hello-libs");
     }
 
     public void referenceJNISnpeEngine() throws IOException, InterruptedException {
         Log.d("Action", "onDetectButtonClick start");
-        // 获取模型文件路径并创建文件对象
 
+        // 获取模型文件路径并创建文件对象
         // 从assets资源中读取图像数据
         AssetManager assetManager = getAssets(); // 获取AssetManager实例
         String[] files = assetManager.list("1280x800");

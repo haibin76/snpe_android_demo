@@ -14,7 +14,6 @@
  * limitations under the License.
  *
  */
-#include <android/log.h>
 #include <SnpeLoader.h>
 #include "android_log.h"
 #include "resize_image.h"
@@ -24,6 +23,20 @@
 #include <cinttypes>
 #include <cstring>
 #include <string>
+
+/*
+ * 该函数是设置APK的SO，具体参考地址：https://developer.qualcomm.com/sites/default/files/docs/snpe/dsp_runtime.html
+ * 该函数是设置：ADSP_LIBRARY_PATH，也有的文献中说要设置LD_LIBRARY_PATH，这两个环境变量该函数都设置了
+ * j_nativeLibPath：是JAVA层通过：getApplication().getApplicationInfo().nativeLibraryDir获得文件地址;
+ */
+extern "C" JNIEXPORT jboolean JNICALL
+Java_com_example_hellolibs_MainActivity_setAdspLibraryPath(JNIEnv *env,jobject thiz, jstring j_nativeLibPath)
+{
+    const char* ch0 = env->GetStringUTFChars(j_nativeLibPath, nullptr);
+    std::string nativeLibPath(ch0);
+
+    return setAdspLibraryPathC(nativeLibPath);
+}
 
 /*
  * JNI层主要的工作流程包括一下几个方面：
@@ -36,17 +49,12 @@
  * 3:等推理结束，app退出的时候，释放掉相关资源
  */
 
-extern "C" JNIEXPORT jboolean JNICALL
-Java_com_example_hellolibs_MainActivity_setAdspLibraryPath(JNIEnv *env,jobject thiz, jstring j_nativeLibPath)
-{
-    const char* ch0 = env->GetStringUTFChars(j_nativeLibPath, nullptr);
-    std::string nativeLibPath(ch0);
-
-    return setAdspLibraryPathC(nativeLibPath);
-}
-
 /*
  *初始化JNI层的C代码，这些初始化的参数主要包括
+ * j_dlc_file：要SnpeSDK加载的dlc文件地址
+ * j_run_time：dlc file要运行的模式，目前有“dsp”、“cpu”、“gpu”
+ * j_data_fmt：目前仅支持“USERBUFFER_FLOAT”，其他模式暂不支持
+ * j_use_opengl：目前仅支持false，不支持opengl的buffer，因为Snpe SDK的opengl模式也没跑通
  * j_in_width:jint,对图像resize之前，输入图像的的宽
  * j_in_height:jint,对图像resize之前，输入图像的高
  * j_in_channel:jint，对图像resize之前，输入图像的channel，目前只支持channel=1的情况
@@ -54,6 +62,7 @@ Java_com_example_hellolibs_MainActivity_setAdspLibraryPath(JNIEnv *env,jobject t
  * j_out_height:jint,对图像resize之后，输出图像的高，也是进入SNPE SDK的输入高
  * j_out_channel:jint,对图像resize之后，输出图像的宽，也是进入SNPE SDK的输入chanel
  */
+
 extern "C" JNIEXPORT jboolean JNICALL
 Java_com_example_hellolibs_MainActivity_initJni(JNIEnv *env,jobject thiz,
                                                 jstring j_dlc_file, jstring j_run_time, jstring j_data_fmt,
@@ -61,6 +70,7 @@ Java_com_example_hellolibs_MainActivity_initJni(JNIEnv *env,jobject thiz,
                                                 jint j_in_width, jint j_in_height, jint j_in_channel,
                                                 jint j_out_width, jint j_out_height, jint j_out_channel)
 {
+    //#0 首先将JAVA层传递下来的参数，转换成C的参数，然后打印出来，供debug使用
     const char* ch1 = env->GetStringUTFChars(j_dlc_file, nullptr);
     std::string dlc_file(ch1);
     const char* ch2 = env->GetStringUTFChars(j_run_time, nullptr);
@@ -76,9 +86,7 @@ Java_com_example_hellolibs_MainActivity_initJni(JNIEnv *env,jobject thiz,
     LOGI("the input shape:(%d*%d*%d)", j_in_channel, j_in_width, j_in_height);
     LOGI("the output shape:(%d*%d*%d)", j_out_channel, j_out_width, j_out_height);
 
-    //#0 设置DSP的环境变量
-
-    //#1 调用resize的初始化函数
+    //#1 初始化resize函数，获得要做resize的时候，宽和高的缩放比例，以及哪些区域可以填充的黑屏数据等
     int iRet = resize_frame_init(j_in_width, j_in_height, j_in_channel,
                                 j_out_width, j_out_height, j_out_channel);
     if (iRet < 0) {
@@ -87,6 +95,7 @@ Java_com_example_hellolibs_MainActivity_initJni(JNIEnv *env,jobject thiz,
     }
     LOGI("setting the resize parameters success");
 
+    //#2 获取相关的环境变量，check这个环境变量设置下去，并且打印出来
     const char *ldLibraryPath = getenv("LD_LIBRARY_PATH");
     if (ldLibraryPath != NULL) {
         LOGI("LD_LIBRARY_PATH: %s\n", ldLibraryPath);
@@ -94,7 +103,7 @@ Java_com_example_hellolibs_MainActivity_initJni(JNIEnv *env,jobject thiz,
         LOGE("LD_LIBRARY_PATH not set\n");
     }
 
-    //#2 调用snpe sdk的初始化
+    //#3 对Snpe SDK进行调用，目前libaction_snpe.so，该函数主要是对SnpeSDk做相关的初始化工作
     iRet = CreateSnpeEngine(dlc_file, run_time, data_fmt, opengl,
                                 j_in_width, j_in_height, j_in_channel,
                                 j_out_width, j_out_height, j_out_channel);
