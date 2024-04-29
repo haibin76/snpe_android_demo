@@ -1,0 +1,83 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.hellolibs"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="14"
+8-->/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="33" />
+9-->/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/src/main/AndroidManifest.xml
+10
+11    <!-- 在SDCard中创建与删除文件权限 -->
+12    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+12-->/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/src/main/AndroidManifest.xml:21:5-83
+12-->/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/src/main/AndroidManifest.xml:21:22-81
+13    <!-- 往SDCard写入数据权限 -->
+14    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+14-->/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/src/main/AndroidManifest.xml:23:5-80
+14-->/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/src/main/AndroidManifest.xml:23:22-78
+15    <!-- 从SDCard读取数据权限 -->
+16    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+16-->/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/src/main/AndroidManifest.xml:25:5-79
+16-->/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/src/main/AndroidManifest.xml:25:22-77
+17
+18    <application
+18-->/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/src/main/AndroidManifest.xml:4:5-18:19
+19        android:allowBackup="true"
+19-->/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/src/main/AndroidManifest.xml:5:9-35
+20        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+20-->[androidx.core:core:1.8.0] /Users/haibin.wu/.gradle/caches/transforms-3/9805343650087d652836f13906f121cc/transformed/core-1.8.0/AndroidManifest.xml:24:18-86
+21        android:debuggable="true"
+22        android:icon="@mipmap/ic_launcher"
+22-->/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/src/main/AndroidManifest.xml:6:9-43
+23        android:label="@string/app_name"
+23-->/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/src/main/AndroidManifest.xml:7:9-41
+24        android:supportsRtl="true"
+24-->/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/src/main/AndroidManifest.xml:8:9-35
+25        android:testOnly="true"
+26        android:theme="@style/AppTheme" >
+26-->/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/src/main/AndroidManifest.xml:9:9-40
+27        <activity
+27-->/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/src/main/AndroidManifest.xml:10:9-17:20
+28            android:name="com.example.hellolibs.MainActivity"
+28-->/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/src/main/AndroidManifest.xml:10:19-47
+29            android:exported="true" >
+29-->/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/src/main/AndroidManifest.xml:11:13-36
+30            <intent-filter>
+30-->/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/src/main/AndroidManifest.xml:12:13-16:29
+31                <action android:name="android.intent.action.MAIN" />
+31-->/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/src/main/AndroidManifest.xml:13:17-69
+31-->/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/src/main/AndroidManifest.xml:13:25-66
+32
+33                <category android:name="android.intent.category.LAUNCHER" />
+33-->/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/src/main/AndroidManifest.xml:15:17-77
+33-->/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/src/main/AndroidManifest.xml:15:27-74
+34            </intent-filter>
+35        </activity>
+36
+37        <provider
+37-->[androidx.emoji2:emoji2:1.2.0] /Users/haibin.wu/.gradle/caches/transforms-3/5b003430b8b4f35f37f7211657d2d33a/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+38            android:name="androidx.startup.InitializationProvider"
+38-->[androidx.emoji2:emoji2:1.2.0] /Users/haibin.wu/.gradle/caches/transforms-3/5b003430b8b4f35f37f7211657d2d33a/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
+39            android:authorities="com.example.hellolibs.androidx-startup"
+39-->[androidx.emoji2:emoji2:1.2.0] /Users/haibin.wu/.gradle/caches/transforms-3/5b003430b8b4f35f37f7211657d2d33a/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
+40            android:exported="false" >
+40-->[androidx.emoji2:emoji2:1.2.0] /Users/haibin.wu/.gradle/caches/transforms-3/5b003430b8b4f35f37f7211657d2d33a/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
+41            <meta-data
+41-->[androidx.emoji2:emoji2:1.2.0] /Users/haibin.wu/.gradle/caches/transforms-3/5b003430b8b4f35f37f7211657d2d33a/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+42                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+42-->[androidx.emoji2:emoji2:1.2.0] /Users/haibin.wu/.gradle/caches/transforms-3/5b003430b8b4f35f37f7211657d2d33a/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
+43                android:value="androidx.startup" />
+43-->[androidx.emoji2:emoji2:1.2.0] /Users/haibin.wu/.gradle/caches/transforms-3/5b003430b8b4f35f37f7211657d2d33a/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
+44            <meta-data
+44-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/haibin.wu/.gradle/caches/transforms-3/15357bcd2e4cb9d7199bc503c46651e3/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:31:13-33:52
+45                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+45-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/haibin.wu/.gradle/caches/transforms-3/15357bcd2e4cb9d7199bc503c46651e3/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:32:17-78
+46                android:value="androidx.startup" />
+46-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/haibin.wu/.gradle/caches/transforms-3/15357bcd2e4cb9d7199bc503c46651e3/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:33:17-49
+47        </provider>
+48    </application>
+49
+50</manifest>

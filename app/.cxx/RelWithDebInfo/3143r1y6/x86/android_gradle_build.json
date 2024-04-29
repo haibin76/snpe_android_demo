@@ -1,0 +1,41 @@
+{
+  "buildFiles": [
+    "/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/src/main/cpp/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/haibin.wu/Library/Android/sdk/cmake/3.18.1/bin/ninja",
+      "-C",
+      "/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/.cxx/RelWithDebInfo/3143r1y6/x86",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/haibin.wu/Library/Android/sdk/cmake/3.18.1/bin/ninja",
+    "-C",
+    "/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/.cxx/RelWithDebInfo/3143r1y6/x86",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "hello-libs::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "x86",
+      "artifactName": "hello-libs",
+      "output": "/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/build/intermediates/cxx/RelWithDebInfo/3143r1y6/obj/x86/libhello-libs.so",
+      "runtimeFiles": [
+        "/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/distribution/gperf/lib/x86/libgperf.so",
+        "/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/distribution/snpe/lib/x86/libaction_snpe.so"
+      ]
+    }
+  },
+  "toolchains": {
+    "toolchain": {
+      "cCompilerExecutable": "/Users/haibin.wu/Library/Android/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang.lld",
+      "cppCompilerExecutable": "/Users/haibin.wu/Library/Android/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++.lld"
+    }
+  },
+  "cFileExtensions": [],
+  "cppFileExtensions": [
+    "cpp"
+  ]
+}

@@ -1,0 +1,3 @@
+/Users/haibin.wu/work/action/ndk-samples/hello-libs/app/.cxx/Debug/615v3b54/arm64-v8a/CMakeFiles/rebuild_cache.dir
+/Users/haibin.wu/work/action/ndk-samples/hello-libs/app/.cxx/Debug/615v3b54/arm64-v8a/CMakeFiles/edit_cache.dir
+/Users/haibin.wu/work/action/ndk-samples/hello-libs/app/.cxx/Debug/615v3b54/arm64-v8a/CMakeFiles/hello-libs.dir

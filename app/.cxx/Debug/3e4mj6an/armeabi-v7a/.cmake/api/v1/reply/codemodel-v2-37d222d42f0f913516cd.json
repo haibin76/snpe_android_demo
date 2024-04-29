@@ -1,0 +1,68 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.4.1"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Project",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "hello-libs::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hello-libs-Debug-b556851b274c75b88816.json",
+					"name" : "hello-libs",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "snpe-env::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-snpe-env-Debug-884fb538fe9ba7871f97.json",
+					"name" : "snpe-env",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/.cxx/Debug/3e4mj6an/armeabi-v7a",
+		"source" : "/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/src/main/cpp"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 1
+	}
+}

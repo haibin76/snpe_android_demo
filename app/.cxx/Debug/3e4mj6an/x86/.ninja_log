@@ -1,0 +1,5 @@
+# ninja log v5
+0	404	1713425937	CMakeFiles/hello-libs.dir/hello-libs.cpp.o	1ab4556199926240
+406	481	1713425937	/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/build/intermediates/cxx/Debug/3e4mj6an/obj/x86/libhello-libs.so	fb736ba5000111a6
+1	343	1713426038	CMakeFiles/hello-libs.dir/hello-libs.cpp.o	d24676149b74d345
+343	403	1713426038	/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/build/intermediates/cxx/Debug/3e4mj6an/obj/x86/libhello-libs.so	ad8315aaeb5e1798

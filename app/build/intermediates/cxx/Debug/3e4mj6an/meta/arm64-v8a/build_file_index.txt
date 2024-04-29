@@ -1,0 +1,1 @@
+/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/src/main/cpp/CMakeLists.txt

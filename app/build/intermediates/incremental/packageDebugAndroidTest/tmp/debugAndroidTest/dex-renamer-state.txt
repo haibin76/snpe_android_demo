@@ -1,0 +1,4 @@
+#Sun Apr 28 16:01:43 CST 2024
+base.0=/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/build/intermediates/dex/debugAndroidTest/mergeDexDebugAndroidTest/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

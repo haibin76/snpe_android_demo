@@ -1,0 +1,3 @@
+# ninja log v5
+0	444	1713323540	CMakeFiles/hello-libs.dir/hello-libs.cpp.o	b375fb3ed1bdb4e1
+445	530	1713323540	/Users/haibin.wu/work/action/ndk-samples/hello-libs/app/build/intermediates/cxx/Debug/615v3b54/obj/x86_64/libhello-libs.so	12b100ee232f4acd

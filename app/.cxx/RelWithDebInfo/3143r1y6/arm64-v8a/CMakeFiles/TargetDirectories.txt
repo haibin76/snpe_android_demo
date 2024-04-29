@@ -1,0 +1,4 @@
+/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/.cxx/RelWithDebInfo/3143r1y6/arm64-v8a/CMakeFiles/rebuild_cache.dir
+/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/.cxx/RelWithDebInfo/3143r1y6/arm64-v8a/CMakeFiles/edit_cache.dir
+/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/.cxx/RelWithDebInfo/3143r1y6/arm64-v8a/CMakeFiles/snpe-env.dir
+/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/.cxx/RelWithDebInfo/3143r1y6/arm64-v8a/CMakeFiles/hello-libs.dir

@@ -1,0 +1,4 @@
+/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/.cxx/Debug/3e4mj6an/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/.cxx/Debug/3e4mj6an/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/.cxx/Debug/3e4mj6an/armeabi-v7a/CMakeFiles/snpe-env.dir
+/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/.cxx/Debug/3e4mj6an/armeabi-v7a/CMakeFiles/hello-libs.dir

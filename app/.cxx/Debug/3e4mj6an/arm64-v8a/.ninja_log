@@ -1,0 +1,16 @@
+# ninja log v5
+2	911	1714291443	/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/build/intermediates/cxx/Debug/3e4mj6an/obj/arm64-v8a/libsnpe-env.so	76a56aebbdb055f4
+1	564	1714199966	CMakeFiles/snpe-env.dir/snpe_env.cpp.o	f20557b7084918e1
+1	2125	1714125851	CMakeFiles/hello-libs.dir/jni_load.cpp.o	12a673afa85de80f
+5	761	1714291443	CMakeFiles/hello-libs.dir/resize_image.cpp.o	b4995b0d3798de68
+5	2135	1714042525	CMakeFiles/hello-libs.dir/snpe_env.cpp.o	ea833374d2c8d4f0
+2	720	1714291492	CMakeFiles/hello-libs.dir/hello-libs.cpp.o	c478ab35531292f1
+2	727	1714299436	/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/build/intermediates/cxx/Debug/3e4mj6an/obj/arm64-v8a/libhello-libs.so	270cf7a1821112e8
+2	1834	1714301854	CMakeFiles/hello-libs.dir/hello-libs.cpp.o	c478ab35531292f1
+1	985	1714301916	CMakeFiles/hello-libs.dir/snpe_env.cpp.o	fcfa87f8a3144c78
+3	1404	1714301972	CMakeFiles/hello-libs.dir/snpe_env.cpp.o	fcfa87f8a3144c78
+1	1704	1714301972	CMakeFiles/hello-libs.dir/hello-libs.cpp.o	c478ab35531292f1
+2	645	1714302001	CMakeFiles/hello-libs.dir/hello-libs.cpp.o	c478ab35531292f1
+645	796	1714302001	/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/build/intermediates/cxx/Debug/3e4mj6an/obj/arm64-v8a/libhello-libs.so	84022e4e0f20467a
+1	1178	1714303434	/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/build/intermediates/cxx/Debug/3e4mj6an/obj/arm64-v8a/libhello-libs.so	84022e4e0f20467a
+2	1197	1714371004	/Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/build/intermediates/cxx/Debug/3e4mj6an/obj/arm64-v8a/libhello-libs.so	84022e4e0f20467a

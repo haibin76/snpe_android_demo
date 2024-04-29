@@ -1,0 +1,7 @@
+com.example.hellolibs.test.app-androidTest-0 /Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/build/generated/res/resValues/androidTest/debug
+com.example.hellolibs.test.app-androidTest-1 /Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/build/generated/res/rs/androidTest/debug
+com.example.hellolibs.test.app-mergeDebugAndroidTestResources-2 /Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/merged.dir
+com.example.hellolibs.test.app-mergeDebugAndroidTestResources-3 /Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/stripped.dir
+com.example.hellolibs.test.app-merged_res-4 /Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/build/intermediates/merged_res/debugAndroidTest
+com.example.hellolibs.test.app-androidTest-5 /Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/src/androidTest/res
+com.example.hellolibs.test.app-androidTestDebug-6 /Users/haibin.wu/work/action/ndk-samples/snpe_android_demo/app/src/androidTestDebug/res
